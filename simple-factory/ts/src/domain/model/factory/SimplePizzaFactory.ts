@@ -6,7 +6,7 @@ import VeggiePizza from '../VeggiePizza.js'
 
 export default class SimplePizzaFactory {
 	createPizza(type: string): Pizza | undefined {
-		if (type == 'chees')
+		if (type == 'cheese')
 			return new CheesePizza()
 		if (type == 'pepperoni')
 			return new PepperoniPizza()

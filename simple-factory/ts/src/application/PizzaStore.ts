@@ -1,15 +1,8 @@
 import Pizza from '../domain/model/Pizza.js'
-import SimplePizzaFactory from '../domain/model/factory/SimplePizzaFactory.js'
 
-export default class PizzaStore {
-	protected factory: SimplePizzaFactory
-
-	constructor(factory: SimplePizzaFactory){
-		this.factory = factory
-	}
-
+export default abstract class PizzaStore {
 	orderPizza(type: string): Pizza | undefined {
-		const pizza = this.factory.createPizza(type)
+		const pizza = this.createPizza(type)
 
 		pizza?.prepare()
 		pizza?.bake()
@@ -17,4 +10,6 @@ export default class PizzaStore {
 		pizza?.box()
 		return pizza
 	}
+	
+	abstract createPizza(type: string): Pizza | undefined
 }
